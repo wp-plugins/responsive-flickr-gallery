@@ -36,8 +36,9 @@ _Responsive Flickr Gallery_ is an easy to use, fast and light plugin to create r
 * Compatible with WordPress plugin guidelines
 * Monetize your Flickr galleries: Optional support for responsive Google AdSense. To opt-on to use AdSense you have to enter your publisher ID
 * Donations welcome by Bitcoin 1LY77g2LpxX6QC3xu9EUEponwKgvZfvFWb, Litecoin LMYPtmBS2fP6pa12iUT2szYkWDR36KNmRv or PayPal
-* A license key is mandatory for businesses and commercial sites. For personal blogs the license is optional and unlocks the pro features
-* A license key unlocks [PRO] features. No new installation required
+* A license key is mandatory for businesses and commercial sites. For personal blogs the license is optional
+* A license key enables [PRO] features. Simply enter your key. No new installation required
+* [PRO] You are allowed to use this plugin on commercial sites and for business with a valid license.
 * [PRO] Monetize your Flickr galleries with 100% ad impressions for your publisher ID
 
 ###Example:
@@ -65,10 +66,6 @@ Contributors and feature requests welcome. Bounties may speed up the development
 ![Default Settings Page](https://dl.dropboxusercontent.com/u/4421587/responsive-flickr-gallery-admin-screenshot-wordpress.jpg "Default Settings Page")
 
 ##Frequently Asked Questions:
-
-#### After upgrade, only one column appears in the gallery. ####
-
-> This happens when you have a cache plugin (like WP Super Cache or W3 All Cache) installed. Old cached CSS file is loaded instead of the new one. Just delete the cached pages from your cache plugin and refresh the gallery page 2-3 times, it will appear fine.
 
 #### I have activated the plugin, but gallery doesn't load. ####
 
