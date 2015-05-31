@@ -18,7 +18,7 @@
 define('BASE_URL', plugins_url() . '/' . basename(dirname(__FILE__)));
 define('SITE_URL', site_url());
 define('DEBUG', false);
-define('VERSION', '1.3.0');
+define('VERSION', '1.3.1');
 
 $rfg_sort_order_map = array(
     'default' => 'Default',
@@ -447,7 +447,7 @@ function rfgDonateBox()
 <div class="postbox">
   <div class="inside">
     <h3>License keys</h3>
-    A <a href="http://www.lars-schenk.com/product/responsive-flickr-gallery-license-yearly" target="_blank">license key is mandatory</a> for businesses and commercial sites. 
+    A <a href="https://www.lars-schenk.com/buy-the-responsive-flickr-gallery" target="_blank">license key is mandatory</a> for businesses and commercial sites. 
     For personal blogs the license is optional but should be considered to support further development and maintenance of this plugin.<br />
     <br />
 

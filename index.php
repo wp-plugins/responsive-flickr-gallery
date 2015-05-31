@@ -3,11 +3,11 @@
    Plugin Name: Responsive Flickr Gallery
    Plugin URI: https://github.com/schenk/responsive-flickr-gallery
    Description: Responsive Flickr Gallery is a simple, fast and light plugin to create a responsive gallery of your Flickr photos on your WordPress enabled website.  Provides a simple yet customizable way to create Flickr galleries in a responsive theme.
-   Version: 1.3.0
+   Version: 1.3.1
    Author: Lars Schenk
-   Author URI: http://www.lars-schenk.com
+   Author URI: https://www.lars-schenk.com
    License: GPLv3 or later
-   Copyright 2013, 2014 Lars Schenk (email : info@lars-schenk.de)
+   Copyright 2013, 2014, 2015 Lars Schenk (email : info@lars-schenk.de)
 
    Forked from: Awesome Flickr Gallery 3.3.6
    Copyright 2011 Ronak Gandhi (email : ronak.gandhi@ronakg.com)
@@ -51,28 +51,26 @@ function rfg_enqueue_styles()
 
 $enable_colorbox = get_option('rfg_slideshow_option') == 'colorbox';
 
-if (!is_admin()) {
-    /* Short code to load Responsive Flickr Gallery plugin.  Detects the word
-     * [RFG_gallery] in posts or pages and loads the gallery.
-     */
-    add_shortcode('RFG_gallery', 'rfg_display_gallery');
-    add_filter('widget_text', 'do_shortcode', 11);
+/* Short code to load Responsive Flickr Gallery plugin.  Detects the word
+ * [RFG_gallery] in posts or pages and loads the gallery.
+ */
+add_shortcode('RFG_gallery', 'rfg_display_gallery');
+add_filter('widget_text', 'do_shortcode', 11);
 
-    $galleries = get_option('rfg_galleries');
-    foreach ($galleries as $gallery) {
-        if ($gallery['slideshow_option'] == 'colorbox') {
-            $enable_colorbox = true;
-            break;
-        }
+$galleries = get_option('rfg_galleries');
+foreach ($galleries as $gallery) {
+    if ($gallery['slideshow_option'] == 'colorbox') {
+        $enable_colorbox = true;
+        break;
     }
-
-    if ($enable_colorbox) {
-        add_action('wp_print_scripts', 'rfg_enqueue_cbox_scripts');
-        add_action('wp_print_styles', 'rfg_enqueue_cbox_styles');
-    }
-
-    add_action('wp_print_styles', 'rfg_enqueue_styles');
 }
+
+if ($enable_colorbox) {
+    add_action('wp_print_scripts', 'rfg_enqueue_cbox_scripts');
+    add_action('wp_print_styles', 'rfg_enqueue_cbox_styles');
+}
+
+add_action('wp_print_styles', 'rfg_enqueue_styles');
 
 add_action('wp_head', 'add_rfg_headers');
 
@@ -144,15 +142,18 @@ function rfg_display_gallery($atts)
     $popular = false;
 
     $rfg_ca_pub = get_option('rfg_ca_pub');
-    list($username, $crc32, $productkey, $expiredate) = explode(';', base64_decode(get_option('rfg_license_key')));
-    if ($productkey == md5('Reponsive Flickr Gallery Pro')
-        && (hash("crc32b", $username.$productkey.$expiredate) == $crc32)
-        && ($expiredate > time())
-        && ($username == get_option('admin_email'))
-    ) {
-        $registeredtext = '';
-    } else {
-        $registeredtext = "This gallery is created with unlicensed version for personal use only. Commercial use requires a valid license! Report missuse to abuse@lars-schenk.de.";
+    $base64_encoded_rfg_license_key = get_option('rfg_license_key');
+    if (!empty($base64_encoded_rfg_license_key)) {
+        list($username, $crc32, $productkey, $expiredate) = explode(';', base64_decode($base64_encoded_rfg_license_key));
+        if ($productkey == md5('Reponsive Flickr Gallery Pro')
+            && (hash("crc32b", $username.$productkey.$expiredate) == $crc32)
+            && ($expiredate > time())
+            && ($username == get_option('admin_email'))
+        ) {
+            $registeredtext = '';
+        } else {
+            $registeredtext = "This gallery is created with unlicensed version for PERSONAL USE ONLY. Commercial use requires a valid license. Thanks for beeing fair.";
+        }
     }
 
     if (empty($rfg_ca_pub)

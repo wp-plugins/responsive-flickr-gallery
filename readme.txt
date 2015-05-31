@@ -1,9 +1,9 @@
 === Responsive Flickr Gallery ===
 Contributors: larsschenk
 Donate link: http://schenk.github.io/responsive-flickr-gallery/
-Tags: responsive, flickr, gallery, cdn, photo, images
+Tags: flickr, responsive, gallery, cdn, photo, laterpay
 Requires at least: 3.7.0
-Tested up to: 3.9.1
+Tested up to: 4.2.2
 Stable tag: /trunk/
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -58,7 +58,7 @@ _Responsive Flickr Gallery_ is an easy to use, fast and light plugin to create r
 
 You can see a live demo of this plugin here:
 
-* [Responsive Flickr Gallery Demo Page | Lars-Schenk.com](http://www.lars-schenk.com/responsive-flickr-gallery)
+* [Responsive Flickr Gallery Demo Page | Lars-Schenk.com](https://www.lars-schenk.com/responsive-flickr-gallery)
 
 ###Support:
 
@@ -122,6 +122,10 @@ Contributors and feature requests welcome. Bounties may speed up the development
 2. Default Settings Page
 
 == Changelog ==
+
+= 1.3.1 =
+* Compatible with laterpay.
+* Fix: Fixes PHP Notices.
 
 = 1.3.0 =
 * Change: Compatible with Flickr API going SSL-Only since June 27th.
